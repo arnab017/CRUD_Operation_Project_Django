@@ -1,0 +1,64 @@
+{% extends 'enroll/base.html' %} {% load static %} {% block title %} ADD Student {% endblock title %} 
+{% block content %}
+<style>
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<h3 class="text-center alert alert-info">Add New Student</h3>
+			<form action="" method="POST">
+				{% csrf_token %}
+				<table class="w-100">
+					{% for field in form %}
+					<tr>
+						<td>{{ field }}</td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td><input class="btn btn-success w-100" type="submit" value="Add" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+		<div class="col-md-7 offset-1">
+			<h3 class="text-center alert alert-info">Student Information</h3>
+			{% if stu %}
+			<table class="table table-hover">
+				<thead class="black text-white">
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Name</th>
+						<th scope="col">Email</th>
+						<th scope="col">Password</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for st in stu %}
+					<tr>
+						<th scope="row">{{ st.id }}</th>
+						<td>{{ st.name }}</td>
+						<td>{{ st.email }}</td>
+						<td>{{ st.password }}</td>
+						<td>
+							<a href="{% url 'updatedata' st.id %}" class="btn btn-warning btn-sm text-dark">Edit</a>
+							<form action="{% url 'deletedata' st.id %}" method="POST" class="d-inline">
+                                {% csrf_token %}
+								<input 
+                                type="submit" 
+                                value="Delete" 
+                                class="btn btn-danger btn-sm" />
+							</form>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% else %}
+			<h4 class="text-center alert alert-warning">No Records</h4>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock content %}

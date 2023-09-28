@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CRUD Project{% endblock title %}</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'enroll/fonts/images/favicon-32x32.png' %}">
+    <link rel="stylesheet" href="{% static 'enroll/fonts/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'enroll/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'enroll/css/mdb.css' %}">
+    <style>
+        body{
+            background: linear-gradient(to right, #30e8bf, #ff8235);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center alert alert-dark">CRUD Operations Project - Django</h2>
+    </div>
+    {% block content %} {% endblock content %}
+    <script src="{% static 'enroll/js/jquery.js' %}"></script>
+    <script src="{% static 'enroll/js/popper.js' %}"></script>
+    <script src="{% static 'enroll/js/bootstrap.js' %}"></script>
+    <script src="{% static 'enroll/js/mdb.js' %}"></script>
+</body>
+</html>
